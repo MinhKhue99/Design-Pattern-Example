@@ -10,7 +10,7 @@ import Combine
 
 // Notification Observer Protocol
 protocol NotificationObserver: AnyObject {
-    func onNotificationSent(_ message: String)
+    func didSendNotification(notification: Notification)
 }
 
 /// - NotificationManager that use Observer pattern to observe when notifications need to be sent, and trigger the appropriate notifications based on changes
@@ -27,15 +27,15 @@ class NotificationManager {
         observers = observers.filter { $0 !== observer }
     }
 
-    func notifyObservers(_ message: String) {
+    func notifyObservers(notification: Notification) {
         for observer in observers {
-            observer.onNotificationSent(message)
+            observer.didSendNotification(notification: notification)
         }
     }
 
-    func sendNotification(channelType: NotificationFactory.NotificationType, message: String, recipient: String) {
-        let channel = NotificationFactory.createNotificationChanel(type: channelType)
-        channel.sendMessage(message, to: recipient)
-        notifyObservers(message)
+    func sendNotification(notification: Notification) {
+        let channel = NotificationFactory.createNotificationChanel(type: notification.type)
+        channel.sendMessage(notification: notification)
+        notifyObservers(notification: notification)
     }
 }

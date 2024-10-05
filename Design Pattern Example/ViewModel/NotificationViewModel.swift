@@ -16,12 +16,14 @@ class NotificationViewModel: ObservableObject, NotificationObserver {
     @Published var lastNotificationMessage: String = ""
     @Published var recipient: String = ""
     @Published var message: String = ""
+    @Published var statusMessage: String = ""
+    @Published var selectedType: NotificationType = .email
 
     // Store cancellable subscriptions
     private var cancellables = Set<AnyCancellable>()
 
     // PassthroughSubject to notify when a notification is sent (Observer Pattern)
-    private let notificationSentSubject = PassthroughSubject<(NotificationFactory.NotificationType, String, String), Never>()
+    private let notificationSentSubject = PassthroughSubject<(Notification), Never>()
 
     init() {
         // Register as an observer in the NotificationManager
@@ -29,9 +31,10 @@ class NotificationViewModel: ObservableObject, NotificationObserver {
 
         // Observe sendNotificationSubject and trigger notifications
         notificationSentSubject
-            .sink { [weak self] (channelType, message, recipient) in
-                NotificationCenterManager.shared.sendNotification(channelType: channelType, message: message, recipient: recipient)
-                self?.lastNotificationMessage = "Sent \(channelType) to \(recipient): \(message)"
+            .sink { [weak self] (notification) in
+                NotificationCenterManager.shared.sendNotification(notification: notification)
+                self?.lastNotificationMessage = "Sent \(notification.type) to \(notification.recipient): \(notification.message) at \(notification.timestamp)"
+                self?.statusMessage = "\(notification.type) notification sent successfully!"
             }
             .store(in: &cancellables)
     }
@@ -40,16 +43,18 @@ class NotificationViewModel: ObservableObject, NotificationObserver {
         NotificationCenterManager.shared.removeObserver(self)
     }
 
-
-    func onNotificationSent(_ message: String) {
-        self.lastNotificationMessage = message
+    func didSendNotification(notification: Notification) {
+        self.lastNotificationMessage = notification.message
     }
 
     // Method to trigger the notification sending
-    func sendNotification(channelType: NotificationFactory.NotificationType) {
-        if (!recipient.isEmpty && !message.isEmpty) {
-            notificationSentSubject.send((channelType, message, recipient))
+    func sendNotification() {
+        guard !message.trimmingCharacters(in: .whitespaces).isEmpty else {
+            statusMessage = "Message cannot be empty."
+            return
         }
+        let notification = Notification(type: selectedType, message: message, recipient: recipient, timestamp: Date())
+        notificationSentSubject.send(notification)
     }
 
 }

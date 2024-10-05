@@ -11,11 +11,12 @@
 		500650202CAEDF21008732E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006501F2CAEDF21008732E9 /* ContentView.swift */; };
 		500650222CAEDF23008732E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 500650212CAEDF23008732E9 /* Assets.xcassets */; };
 		500650252CAEDF23008732E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 500650242CAEDF23008732E9 /* Preview Assets.xcassets */; };
-		5006502D2CAEE2CF008732E9 /* NotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006502C2CAEE2CF008732E9 /* NotificationType.swift */; };
+		5006502D2CAEE2CF008732E9 /* NotificationConcrete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006502C2CAEE2CF008732E9 /* NotificationConcrete.swift */; };
 		5006502F2CAEE41D008732E9 /* NotificationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006502E2CAEE41D008732E9 /* NotificationFactory.swift */; };
 		500650352CAEE6E4008732E9 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500650342CAEE6E4008732E9 /* NotificationManager.swift */; };
 		500650372CAEF34D008732E9 /* NotificationCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500650362CAEF34D008732E9 /* NotificationCenterManager.swift */; };
 		500650392CAEF401008732E9 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500650382CAEF401008732E9 /* NotificationViewModel.swift */; };
+		50200E092CB0D9B7002E4C84 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50200E082CB0D9B7002E4C84 /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,11 +25,12 @@
 		5006501F2CAEDF21008732E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		500650212CAEDF23008732E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		500650242CAEDF23008732E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5006502C2CAEE2CF008732E9 /* NotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationType.swift; sourceTree = "<group>"; };
+		5006502C2CAEE2CF008732E9 /* NotificationConcrete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConcrete.swift; sourceTree = "<group>"; };
 		5006502E2CAEE41D008732E9 /* NotificationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFactory.swift; sourceTree = "<group>"; };
 		500650342CAEE6E4008732E9 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		500650362CAEF34D008732E9 /* NotificationCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterManager.swift; sourceTree = "<group>"; };
 		500650382CAEF401008732E9 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		50200E082CB0D9B7002E4C84 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +84,9 @@
 		5006502B2CAEE254008732E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5006502C2CAEE2CF008732E9 /* NotificationType.swift */,
+				5006502C2CAEE2CF008732E9 /* NotificationConcrete.swift */,
 				5006502E2CAEE41D008732E9 /* NotificationFactory.swift */,
+				50200E082CB0D9B7002E4C84 /* Notification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,9 +196,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				500650202CAEDF21008732E9 /* ContentView.swift in Sources */,
-				5006502D2CAEE2CF008732E9 /* NotificationType.swift in Sources */,
+				5006502D2CAEE2CF008732E9 /* NotificationConcrete.swift in Sources */,
 				500650352CAEE6E4008732E9 /* NotificationManager.swift in Sources */,
 				500650392CAEF401008732E9 /* NotificationViewModel.swift in Sources */,
+				50200E092CB0D9B7002E4C84 /* Notification.swift in Sources */,
 				5006501E2CAEDF21008732E9 /* Design_Pattern_ExampleApp.swift in Sources */,
 				5006502F2CAEE41D008732E9 /* NotificationFactory.swift in Sources */,
 				500650372CAEF34D008732E9 /* NotificationCenterManager.swift in Sources */,

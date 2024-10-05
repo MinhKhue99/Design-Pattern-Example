@@ -11,12 +11,6 @@ import Foundation
 
 class NotificationFactory {
 
-    enum NotificationType {
-        case email
-        case sms
-        case push
-    }
-
     static func createNotificationChanel(type: NotificationType) -> NotificationChannel {
         switch type {
         case .email:

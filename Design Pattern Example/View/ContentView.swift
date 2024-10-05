@@ -9,15 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = NotificationViewModel()
-    @State private var selectedChannel: NotificationFactory.NotificationType = .email
 
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 20) {
-                Picker("Channel", selection: $selectedChannel) {
-                    Text("Email").tag(NotificationFactory.NotificationType.email)
-                    Text("SMS").tag(NotificationFactory.NotificationType.sms)
-                    Text("Push Notification").tag(NotificationFactory.NotificationType.push)
+                Picker("Channel", selection: $viewModel.selectedType) {
+                    Text("Email").tag(NotificationType.email)
+                    Text("SMS").tag(NotificationType.sms)
+                    Text("Push Notification").tag(NotificationType.push)
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal)
@@ -34,7 +33,7 @@ struct ContentView: View {
 
                 // Send Notification Button
                 Button(action: {
-                    viewModel.sendNotification(channelType: selectedChannel)
+                    viewModel.sendNotification()
                 }) {
                     Text("Send Notification")
                         .frame(maxWidth: .infinity)
@@ -46,7 +45,7 @@ struct ContentView: View {
                 .padding(.horizontal)
 
                 // Display last sent notification
-                if !viewModel.lastNotificationMessage.isEmpty {
+                if !viewModel.statusMessage.isEmpty {
                     Text("Last Sent Notification: \(viewModel.lastNotificationMessage)")
                         .padding()
                         .background(Color.green.opacity(0.1))

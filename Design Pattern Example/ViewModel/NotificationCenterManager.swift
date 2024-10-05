@@ -14,8 +14,8 @@ class NotificationCenterManager {
 
     private var notificationManager = NotificationManager()
 
-    func sendNotification(channelType: NotificationFactory.NotificationType, message: String, recipient: String) {
-        notificationManager.sendNotification(channelType: channelType, message: message, recipient: recipient)
+    func sendNotification(notification: Notification) {
+        notificationManager.sendNotification(notification: notification)
     }
 
     func addObserver(_ observer: NotificationObserver) {
